@@ -71,11 +71,13 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
 
-- ⬜ Step 4.5: Generate frontend API types from OpenAPI
-  - Use `openapi.yaml` as the source of truth for API request and response types.
-  - Generate TypeScript types after the frontend project exists.
-  - Candidate command: `npx openapi-typescript openapi.yaml -o frontend/src/api/schema.ts`.
-  - Keep generated types in sync whenever `openapi.yaml` changes.
+- ✅ Step 4.5: Define frontend API contract types
+  - Keep this step lightweight and avoid generated client tooling.
+  - Add small hand-written TypeScript request and response types for the frontend API client.
+  - Keep those types aligned with `openapi.yaml`.
+  - Verification:
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
 
 - ⬜ Step 5: Build calculator UI
   - Add operation selection and numeric inputs.

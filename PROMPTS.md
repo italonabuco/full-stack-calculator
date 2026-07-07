@@ -81,3 +81,7 @@ Use the official Vite scaffold command for the React TypeScript frontend instead
 ```txt
 Add frontend cleanup and configuration for the scaffold, including the project Node.js version and verification commands.
 ```
+
+```txt
+Keep the frontend API contract simple by defining small hand-written TypeScript types instead of using generated OpenAPI client tooling.
+```

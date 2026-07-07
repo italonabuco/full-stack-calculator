@@ -102,12 +102,6 @@ go test -v ./... -cover
 
 The API contract is documented in `openapi.yaml`. Keep that file in sync whenever endpoints, request fields, response shapes, or error messages change.
 
-Once the frontend exists, TypeScript API types can be generated from the OpenAPI contract:
-
-```sh
-npx openapi-typescript openapi.yaml -o frontend/src/api/schema.ts
-```
-
 Health check:
 
 ```sh
