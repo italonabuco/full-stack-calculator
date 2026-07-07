@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: Full-Stack Calculator API
+  version: 0.1.0
+  description: REST API for calculator operations used by the React frontend.
+servers:
+  - url: http://localhost:8080
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+              example:
+                status: ok
+  /api/calculate:
+    post:
+      summary: Run a calculator operation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CalculationRequest"
+            examples:
+              addition:
+                summary: Addition
+                value:
+                  operation: add
+                  a: 10
+                  b: 5
+              squareRoot:
+                summary: Square root
+                value:
+                  operation: sqrt
+                  a: 25
+      responses:
+        "200":
+          description: Calculation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CalculationResponse"
+              examples:
+                addition:
+                  value:
+                    operation: add
+                    result: 15
+                squareRoot:
+                  value:
+                    operation: sqrt
+                    result: 5
+        "400":
+          description: Invalid request or unsupported calculation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                divisionByZero:
+                  value:
+                    error: division by zero
+                invalidData:
+                  value:
+                    error: first operand is required
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          example: ok
+    CalculationRequest:
+      type: object
+      required:
+        - operation
+        - a
+      properties:
+        operation:
+          $ref: "#/components/schemas/Operation"
+        a:
+          type: number
+          format: double
+          description: First operand. For square root, this is the only operand.
+          example: 10
+        b:
+          type: number
+          format: double
+          description: Second operand. Required for all operations except square root.
+          example: 5
+    CalculationResponse:
+      type: object
+      required:
+        - operation
+        - result
+      properties:
+        operation:
+          $ref: "#/components/schemas/Operation"
+        result:
+          type: number
+          format: double
+          example: 15
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          example: division by zero
+    Operation:
+      type: string
+      enum:
+        - add
+        - subtract
+        - multiply
+        - divide
+        - power
+        - sqrt
+        - percentage

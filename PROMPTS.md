@@ -65,3 +65,11 @@ Lets update the README.md with the information we got for the assessment.
 ```txt
 Create a AGENTS.md with guide based on the requirements, PROMPTS.md with the prompts we used so far and .gitignore with default setup
 ```
+
+```txt
+Add an openapi.yaml specification for the backend api and instructions to keep it updated whenever api behavior changes.
+```
+
+```txt
+Add a future checklist item to generate frontend TypeScript API types from the OpenAPI specification.
+```
