@@ -31,6 +31,10 @@ A full-stack calculator application built as a code assessment. The app will use
 └── README.md
 ```
 
+## Progress Tracking
+
+See `CHECKLIST.md` for the step-by-step implementation plan and current project status.
+
 ## Setup
 
 Setup instructions will be added as the backend and frontend are implemented.

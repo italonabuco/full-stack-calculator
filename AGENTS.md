@@ -15,6 +15,7 @@ This repository is a full-stack calculator assessment using a React frontend and
 - `frontend/`: React + TypeScript calculator UI.
 - `README.md`: setup, usage, API examples, and design rationale.
 - `PROMPTS.md`: prompts used while building the assessment.
+- `CHECKLIST.md`: step-by-step project status and implementation checklist.
 
 ## Backend Guidance
 
@@ -35,6 +36,7 @@ This repository is a full-stack calculator assessment using a React frontend and
 ## Workflow
 
 - Implement one step at a time.
+- Keep `CHECKLIST.md` updated when a step starts, is ready for review, or is committed.
 - Wait for review and approval before moving to the next step.
 - Do not commit unless explicitly asked.
 - Keep generated dependencies, coverage reports, and build outputs out of Git.
