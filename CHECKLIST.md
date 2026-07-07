@@ -25,7 +25,7 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
   - Reference `CHECKLIST.md` from `AGENTS.md`.
 
 - ✅ Step 2: Add backend calculator domain logic
-  - Commit: `189a277 feat: add backend calculator domain logic`
+  - Commit: `ea18179 feat: add backend calculator domain logic`
   - Add Go module under `backend/`.
   - Add pure calculator package under `backend/internal/calculator/`.
   - Support add, subtract, multiply, divide, power, square root, and percentage.
@@ -36,7 +36,7 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - Current coverage: `86.5% of statements`
 
 - ✅ Step 3: Add backend REST API
-  - Commit: `824ca2a feat: add backend rest api`
+  - Commit: `9428295 feat: add backend rest api`
   - Add HTTP handlers for calculator requests.
   - Add health endpoint.
   - Return JSON success and error responses.
@@ -49,7 +49,7 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - Calculator package coverage: `86.5% of statements`
 
 - ✅ Step 4: Add React frontend foundation
-  - Commit: `8669ef2 feat: scaffold react frontend`
+  - Commit: `55b6f35 feat: scaffold react frontend`
   - Create Vite React TypeScript app under `frontend/`.
   - Add basic project scripts.
   - Keep dependencies and build outputs out of Git.
@@ -59,6 +59,7 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - Build passes with Node.js `24.13.0`.
 
 - ✅ Step 4.25: Clean up frontend scaffold and configuration
+  - Commit: `9a380f4 chore: add frontend node configuration`
   - Add `.nvmrc` for the frontend Node.js version.
   - Review generated Vite assets and remove anything not needed for the calculator app.
   - Keep the root `README.md` as the evaluation source of truth.
