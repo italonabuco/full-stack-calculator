@@ -77,3 +77,7 @@ Add a future checklist item to generate frontend TypeScript API types from the O
 ```txt
 Use the official Vite scaffold command for the React TypeScript frontend instead of manually creating the project files.
 ```
+
+```txt
+Add frontend cleanup and configuration for the scaffold, including the project Node.js version and verification commands.
+```

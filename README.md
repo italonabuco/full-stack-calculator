@@ -42,6 +42,12 @@ Install:
 - Go 1.26 or newer for the backend
 - Node.js 20.19 or newer for the frontend
 
+If you use `nvm`, switch to the project Node.js version before running frontend commands:
+
+```sh
+nvm use
+```
+
 ## Backend
 
 The backend includes:

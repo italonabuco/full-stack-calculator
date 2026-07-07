@@ -58,12 +58,17 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build`
     - Build passes with Node.js `24.13.0`.
 
-- ⬜ Step 4.25: Clean up frontend scaffold and configuration
+- ✅ Step 4.25: Clean up frontend scaffold and configuration
   - Add `.nvmrc` for the frontend Node.js version.
   - Review generated Vite assets and remove anything not needed for the calculator app.
   - Keep the root `README.md` as the evaluation source of truth.
   - Confirm package scripts and lint configuration are appropriate before app work begins.
-  - Verification target: `npm run build`.
+  - Verification target:
+    - `npm run build`
+    - `npm run lint`
+  - Verification:
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
 
 - ⬜ Step 4.5: Generate frontend API types from OpenAPI
   - Use `openapi.yaml` as the source of truth for API request and response types.
