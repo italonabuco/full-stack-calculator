@@ -18,17 +18,22 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
   - Commit: `7dcfe80 docs: add project guidance files`
   - Added `AGENTS.md`, `PROMPTS.md`, and `.gitignore`.
 
-- `[~]` Step 1.75: Add progress tracking checklist
+- `[x]` Step 1.75: Add progress tracking checklist
+  - Commit: `774fa31 docs: add progress checklist`
   - Add `CHECKLIST.md` to track step status.
   - Reference `CHECKLIST.md` from `README.md`.
   - Reference `CHECKLIST.md` from `AGENTS.md`.
 
-- `[~]` Step 2: Add backend calculator domain logic
+- `[x]` Step 2: Add backend calculator domain logic
+  - Commit: `189a277 feat: add backend calculator domain logic`
   - Add Go module under `backend/`.
   - Add pure calculator package under `backend/internal/calculator/`.
   - Support add, subtract, multiply, divide, power, square root, and percentage.
   - Add unit tests for normal operations and edge cases.
-  - Verification target: `go test ./...` and `go test ./... -cover`.
+  - Verification:
+    - `go test ./...`
+    - `go test ./... -cover`
+    - Current coverage: `86.5% of statements`
 
 - `[ ]` Step 3: Add backend REST API
   - Add HTTP handlers for calculator requests.

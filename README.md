@@ -39,6 +39,35 @@ See `CHECKLIST.md` for the step-by-step implementation plan and current project 
 
 Setup instructions will be added as the backend and frontend are implemented.
 
+## Backend
+
+The backend currently includes pure calculator domain logic under `backend/internal/calculator`.
+
+Implemented operations:
+
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- Exponentiation
+- Square root
+- Percentage
+
+Current backend tests can be run from the backend directory:
+
+```sh
+cd backend
+go test ./...
+go test ./... -cover
+```
+
+For detailed test output, use verbose mode:
+
+```sh
+go test -v ./...
+go test -v ./... -cover
+```
+
 ## Running the Application
 
 Backend and frontend run commands will be added once each service exists.

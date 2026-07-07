@@ -37,6 +37,8 @@ This repository is a full-stack calculator assessment using a React frontend and
 
 - Implement one step at a time.
 - Keep `CHECKLIST.md` updated when a step starts, is ready for review, or is committed.
+- Run the relevant test suite before committing implementation changes, and record the command/result in `CHECKLIST.md` or the final summary.
+- Before committing a completed step, mark that step as done in `CHECKLIST.md` and include the commit hash after the commit succeeds.
 - Wait for review and approval before moving to the next step.
 - Do not commit unless explicitly asked.
 - Keep generated dependencies, coverage reports, and build outputs out of Git.
