@@ -48,10 +48,22 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - API package coverage: `97.3% of statements`
     - Calculator package coverage: `86.5% of statements`
 
-- ⬜ Step 4: Add React frontend foundation
+- ✅ Step 4: Add React frontend foundation
+  - Commit: `8669ef2 feat: scaffold react frontend`
   - Create Vite React TypeScript app under `frontend/`.
-  - Add basic project scripts and test setup.
+  - Add basic project scripts.
   - Keep dependencies and build outputs out of Git.
+  - Document frontend run/build commands in the root `README.md`.
+  - Verification:
+    - `npm run build`
+    - Build passes with Node.js `24.13.0`.
+
+- ⬜ Step 4.25: Clean up frontend scaffold and configuration
+  - Add `.nvmrc` for the frontend Node.js version.
+  - Review generated Vite assets and remove anything not needed for the calculator app.
+  - Keep the root `README.md` as the evaluation source of truth.
+  - Confirm package scripts and lint configuration are appropriate before app work begins.
+  - Verification target: `npm run build`.
 
 - ⬜ Step 4.5: Generate frontend API types from OpenAPI
   - Use `openapi.yaml` as the source of truth for API request and response types.

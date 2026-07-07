@@ -73,3 +73,7 @@ Add an openapi.yaml specification for the backend api and instructions to keep i
 ```txt
 Add a future checklist item to generate frontend TypeScript API types from the OpenAPI specification.
 ```
+
+```txt
+Use the official Vite scaffold command for the React TypeScript frontend instead of manually creating the project files.
+```

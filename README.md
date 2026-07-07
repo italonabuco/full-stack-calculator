@@ -37,7 +37,10 @@ See `CHECKLIST.md` for the step-by-step implementation plan and current project 
 
 ## Setup
 
-Install Go 1.26 or newer for the backend.
+Install:
+
+- Go 1.26 or newer for the backend
+- Node.js 20.19 or newer for the frontend
 
 ## Backend
 
@@ -175,7 +178,32 @@ Supported operation values:
 
 ## Frontend
 
-Frontend setup and run commands will be added once the React app is implemented.
+The frontend is a Vite React TypeScript app under `frontend/`.
+
+Install frontend dependencies:
+
+```sh
+cd frontend
+npm install
+```
+
+Run the frontend development server:
+
+```sh
+npm run dev
+```
+
+Build the frontend:
+
+```sh
+npm run build
+```
+
+Preview the production build:
+
+```sh
+npm run preview
+```
 
 ## Design Decisions
 
