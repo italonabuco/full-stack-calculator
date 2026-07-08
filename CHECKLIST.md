@@ -92,6 +92,7 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run lint` passed with Node.js `24.13.0`
 
 - ✅ Step 5.5: Polish calculator UI
+  - Commit: `b883344 feat: polish calculator frontend UI`
   - Improve operation selector presentation.
   - Add operation symbols and live formula preview.
   - Improve result panel with calculation expression context.

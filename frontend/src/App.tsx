@@ -5,6 +5,11 @@ import type { CalculationRequest, Operation } from './api/types'
 import { operations } from './api/types'
 import './App.css'
 
+type CalculationResult = {
+  expression: string
+  value: number
+}
+
 const operationLabels: Record<Operation, string> = {
   add: 'Addition',
   subtract: 'Subtraction',
@@ -39,7 +44,7 @@ function App() {
   const [operation, setOperation] = useState<Operation>('add')
   const [firstOperand, setFirstOperand] = useState('')
   const [secondOperand, setSecondOperand] = useState('')
-  const [result, setResult] = useState<number | null>(null)
+  const [result, setResult] = useState<CalculationResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -50,11 +55,6 @@ function App() {
     firstOperand,
     secondOperand,
   )
-  const resultExpression =
-    result === null
-      ? null
-      : getResultExpression(operation, firstOperand, secondOperand, result)
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setError(null)
@@ -82,7 +82,15 @@ function App() {
 
     try {
       const response = await calculate(request)
-      setResult(response.result)
+      setResult({
+        expression: getResultExpression(
+          operation,
+          String(a),
+          needsSecondOperand && b !== null ? String(b) : '',
+          response.result,
+        ),
+        value: response.result,
+      })
     } catch (unknownError) {
       setError(
         unknownError instanceof Error
@@ -181,10 +189,8 @@ function App() {
               </div>
               <div className="result-content">
                 <span className="result-label">Result</span>
-                <p className="result-value">{formatResult(result)}</p>
-                {resultExpression ? (
-                  <p className="result-expression">{resultExpression}</p>
-                ) : null}
+                <p className="result-value">{formatResult(result.value)}</p>
+                <p className="result-expression">{result.expression}</p>
               </div>
             </div>
           ) : null}
