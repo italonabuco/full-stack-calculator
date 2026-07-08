@@ -191,6 +191,22 @@ npm run dev
 
 Open the frontend at the URL printed by Vite, usually `http://localhost:5173`.
 
+## Docker
+
+Docker support is optional. To run the full stack with Docker Compose:
+
+```sh
+docker compose up --build
+```
+
+Open the frontend at `http://localhost:5173`. The backend API is exposed at `http://localhost:8080`.
+
+Stop the containers:
+
+```sh
+docker compose down
+```
+
 ## API Examples
 
 The API contract is documented in `openapi.yaml`. Keep that file in sync whenever endpoints, request fields, response shapes, or error messages change.
@@ -298,7 +314,7 @@ For this assessment, hand-written types keep the implementation simple and reada
 - The calculator runs one operation at a time and does not parse free-form mathematical expressions.
 - Operand `b` is required for every operation except square root.
 - The backend returns API errors as JSON with an `error` field.
-- Docker support is optional for this assessment and is not required to run the project locally.
+- Docker support is optional for this assessment; local Go and Node.js commands remain the primary development workflow.
 
 ## Test Coverage
 

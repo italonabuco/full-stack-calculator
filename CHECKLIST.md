@@ -141,9 +141,18 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
 
-- ⬜ Step 8: Optional Docker support
+- ✅ Step 8: Optional Docker support
   - Add Dockerfiles and/or Docker Compose if time allows.
   - Document Docker usage in README.
+  - Verification:
+    - `docker compose config` passed.
+    - `docker compose build` passed.
+    - Stopped local processes using ports `8080` and `5173` before the smoke test.
+    - `docker compose up -d` passed.
+    - `curl http://localhost:8080/health` returned `{"status":"ok"}`.
+    - `curl http://localhost:8080/api/calculate` percentage smoke check returned `5`.
+    - `curl http://localhost:5173` returned the production frontend HTML.
+    - `docker compose down` cleaned up the containers and network.
 
 - ⬜ Step 9: Final verification
   - Run backend tests and coverage.
