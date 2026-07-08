@@ -8,6 +8,7 @@
   --input-bg: #ffffff;
   --input-border: #b8c4d4;
   --accent: #276749;
+  --success-bg: rgba(39, 103, 73, 0.14);
   --focus-ring: rgba(39, 103, 73, 0.18);
   --danger: #b42318;
   --shadow: 0 18px 45px rgba(31, 45, 61, 0.12);
@@ -47,7 +48,7 @@ select {
 
 h1 {
   color: var(--text);
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(2rem, 6vw, 3rem);
   line-height: 1;
   margin: 0;
 }

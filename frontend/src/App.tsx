@@ -18,11 +18,21 @@ const operationLabels: Record<Operation, string> = {
 const operationHints: Record<Operation, string> = {
   add: 'a + b',
   subtract: 'a - b',
-  multiply: 'a x b',
-  divide: 'a / b',
-  power: 'a ^ b',
-  sqrt: 'sqrt(a)',
+  multiply: 'a × b',
+  divide: 'a ÷ b',
+  power: 'aᵇ',
+  sqrt: '√a',
   percentage: 'a% of b',
+}
+
+const operationSymbols: Record<Operation, string> = {
+  add: '+',
+  subtract: '−',
+  multiply: '×',
+  divide: '÷',
+  power: '^',
+  sqrt: '√',
+  percentage: '%',
 }
 
 function App() {
@@ -35,6 +45,15 @@ function App() {
 
   const needsSecondOperand = operation !== 'sqrt'
   const selectedHint = useMemo(() => operationHints[operation], [operation])
+  const formulaPreview = getFormulaPreview(
+    operation,
+    firstOperand,
+    secondOperand,
+  )
+  const resultExpression =
+    result === null
+      ? null
+      : getResultExpression(operation, firstOperand, secondOperand, result)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -92,27 +111,34 @@ function App() {
         <form className="calculator-form" onSubmit={handleSubmit}>
           <label className="field">
             <span>Operation</span>
-            <select
-              value={operation}
-              onChange={(event) =>
-                handleOperationChange(event.target.value as Operation)
-              }
-            >
-              {operations.map((availableOperation) => (
-                <option key={availableOperation} value={availableOperation}>
-                  {operationLabels[availableOperation]}
-                </option>
-              ))}
-            </select>
+            <div className="select-shell">
+              <span className="select-symbol" aria-hidden="true">
+                {operationSymbols[operation]}
+              </span>
+              <select
+                value={operation}
+                onChange={(event) =>
+                  handleOperationChange(event.target.value as Operation)
+                }
+              >
+                {operations.map((availableOperation) => (
+                  <option key={availableOperation} value={availableOperation}>
+                    {operationLabels[availableOperation]}
+                  </option>
+                ))}
+              </select>
+            </div>
           </label>
 
           <div className="operation-preview" aria-live="polite">
-            {selectedHint}
+            <span>{formulaPreview || selectedHint}</span>
           </div>
 
           <div className="operand-grid">
             <label className="field">
-              <span>{operation === 'sqrt' ? 'Number' : 'First number'}</span>
+              <span>
+                {operation === 'sqrt' ? 'Number (a)' : 'First number (a)'}
+              </span>
               <input
                 type="number"
                 inputMode="decimal"
@@ -126,7 +152,7 @@ function App() {
             {needsSecondOperand ? (
               <label className="field">
                 <span>
-                  {operation === 'percentage' ? 'Total' : 'Second number'}
+                  {operation === 'percentage' ? 'Total (b)' : 'Second number (b)'}
                 </span>
                 <input
                   type="number"
@@ -146,11 +172,21 @@ function App() {
         </form>
 
         <section className="result-panel" aria-live="polite">
-          <span className="result-label">Result</span>
           {isLoading ? <p className="muted">Working...</p> : null}
           {!isLoading && error ? <p className="error-message">{error}</p> : null}
           {!isLoading && !error && result !== null ? (
-            <p className="result-value">{formatResult(result)}</p>
+            <div className="result-success">
+              <div className="result-status" aria-hidden="true">
+                ✓
+              </div>
+              <div className="result-content">
+                <span className="result-label">Result</span>
+                <p className="result-value">{formatResult(result)}</p>
+                {resultExpression ? (
+                  <p className="result-expression">{resultExpression}</p>
+                ) : null}
+              </div>
+            </div>
           ) : null}
           {!isLoading && !error && result === null ? (
             <p className="muted">Ready</p>
@@ -173,6 +209,45 @@ function parseNumber(value: string): number | null {
 
 function formatResult(value: number): string {
   return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(10)))
+}
+
+function displayValue(value: string, fallback: string): string {
+  return value.trim() === '' ? fallback : value
+}
+
+function getFormulaPreview(
+  operation: Operation,
+  firstOperand: string,
+  secondOperand: string,
+): string {
+  const a = displayValue(firstOperand, 'a')
+  const b = displayValue(secondOperand, 'b')
+
+  switch (operation) {
+    case 'add':
+      return `${a} + ${b}`
+    case 'subtract':
+      return `${a} − ${b}`
+    case 'multiply':
+      return `${a} × ${b}`
+    case 'divide':
+      return `${a} ÷ ${b}`
+    case 'power':
+      return `${a} ^ ${b}`
+    case 'sqrt':
+      return `√${a}`
+    case 'percentage':
+      return `${a}% of ${b}`
+  }
+}
+
+function getResultExpression(
+  operation: Operation,
+  firstOperand: string,
+  secondOperand: string,
+  result: number,
+): string {
+  return `${getFormulaPreview(operation, firstOperand, secondOperand)} = ${formatResult(result)}`
 }
 
 export default App

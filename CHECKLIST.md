@@ -70,6 +70,8 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
   - Verification:
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
+    - Localhost smoke check passed at `http://localhost:5173`
+    - `POST /api/calculate` percentage smoke check returned `5`
 
 - ✅ Step 4.5: Define frontend API contract types
   - Keep this step lightweight and avoid generated client tooling.
@@ -85,6 +87,15 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
   - Add responsive styling.
   - Connect UI to backend API client.
   - Remove unused Vite starter UI assets.
+  - Verification:
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
+
+- ✅ Step 5.5: Polish calculator UI
+  - Improve operation selector presentation.
+  - Add operation symbols and live formula preview.
+  - Improve result panel with calculation expression context.
+  - Keep API behavior unchanged.
   - Verification:
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`

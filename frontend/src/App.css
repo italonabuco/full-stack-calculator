@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   min-height: 100svh;
-  padding: 24px;
+  padding: 20px;
 }
 
 .calculator-panel {
@@ -12,9 +12,9 @@
   border-radius: 8px;
   box-shadow: var(--shadow);
   display: grid;
-  gap: 24px;
-  max-width: 720px;
-  padding: 32px;
+  gap: 22px;
+  max-width: 760px;
+  padding: 30px;
   width: 100%;
 }
 
@@ -44,23 +44,51 @@
 .field span,
 .result-label {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .field input,
-.field select {
+.select-shell {
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 6px;
   color: var(--text);
-  min-height: 48px;
+  min-height: 54px;
+  width: 100%;
+}
+
+.field input {
   padding: 0 14px;
+}
+
+.select-shell {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  padding: 0 14px;
+}
+
+.select-symbol {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.select-shell select {
+  appearance: auto;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  min-height: 50px;
+  outline: none;
   width: 100%;
 }
 
 .field input:focus,
-.field select:focus {
+.select-shell:focus-within {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--focus-ring);
   outline: none;
@@ -71,10 +99,13 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   color: var(--text);
+  display: flex;
+  align-items: center;
   font-family: var(--mono);
+  font-size: 17px;
   font-weight: 800;
-  min-height: 44px;
-  padding: 10px 14px;
+  min-height: 52px;
+  padding: 10px 16px;
 }
 
 .operand-grid {
@@ -89,9 +120,10 @@
   border-radius: 6px;
   color: #ffffff;
   cursor: pointer;
+  font-size: 16px;
   font-weight: 800;
-  min-height: 50px;
-  padding: 0 18px;
+  min-height: 54px;
+  padding: 0 16px;
 }
 
 .calculate-button:disabled {
@@ -105,17 +137,53 @@
   border-radius: 8px;
   display: grid;
   gap: 10px;
-  min-height: 132px;
-  padding: 20px;
+  min-height: 126px;
+  padding: 22px;
+}
+
+.result-success {
+  align-items: center;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: auto 1fr;
+}
+
+.result-status {
+  align-items: center;
+  background: var(--success-bg);
+  border-radius: 999px;
+  color: var(--accent);
+  display: flex;
+  font-size: 30px;
+  font-weight: 900;
+  height: 58px;
+  justify-content: center;
+  width: 58px;
+}
+
+.result-content {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
 }
 
 .result-value {
-  color: var(--text);
-  font-size: 42px;
+  color: var(--accent);
+  font-size: 40px;
   font-weight: 900;
   line-height: 1.1;
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.result-expression {
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0;
+  overflow-wrap: anywhere;
+  padding-top: 10px;
 }
 
 .muted,
@@ -139,7 +207,7 @@
   }
 
   .calculator-panel {
-    padding: 20px;
+    padding: 18px;
   }
 
   .operand-grid {
@@ -147,6 +215,18 @@
   }
 
   .result-value {
-    font-size: 34px;
+    font-size: 32px;
+  }
+
+  .result-success {
+    align-items: start;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .result-status {
+    height: 56px;
+    width: 56px;
+    font-size: 28px;
   }
 }
