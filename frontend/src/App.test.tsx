@@ -60,7 +60,7 @@ describe('App', () => {
     expect(screen.getByText('5% of 100 = 5')).toBeInTheDocument()
   })
 
-  it('displays backend errors from failed calculations', async () => {
+  it('displays friendly messages for backend calculation errors', async () => {
     mockedCalculate.mockRejectedValue(new Error('division by zero'))
     const user = userEvent.setup()
     render(<App />)
@@ -70,6 +70,26 @@ describe('App', () => {
     await user.type(screen.getByLabelText(/second number \(b\)/i), '0')
     await user.click(screen.getByRole('button', { name: /calculate/i }))
 
-    expect(await screen.findByText('division by zero')).toBeInTheDocument()
+    expect(
+      await screen.findByText('Choose a non-zero second number before dividing.'),
+    ).toBeInTheDocument()
+  })
+
+  it('displays a friendly message when the API cannot be reached', async () => {
+    mockedCalculate.mockRejectedValue(
+      new Error('Unable to reach the calculator API.'),
+    )
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.type(screen.getByLabelText(/first number \(a\)/i), '10')
+    await user.type(screen.getByLabelText(/second number \(b\)/i), '5')
+    await user.click(screen.getByRole('button', { name: /calculate/i }))
+
+    expect(
+      await screen.findByText(
+        'The calculator API is not reachable. Make sure the backend is running.',
+      ),
+    ).toBeInTheDocument()
   })
 })

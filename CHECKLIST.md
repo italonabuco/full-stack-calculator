@@ -130,6 +130,17 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
 
+- ✅ Step 7.5: Improve frontend error messages
+  - Keep backend API error messages stable.
+  - Translate known backend errors into clearer frontend messages.
+  - Update frontend tests for friendly error display.
+  - Verification:
+    - `npm run test` passed with Node.js `24.13.0` (`8` tests)
+    - `npm run test:coverage` passed with Node.js `24.13.0`
+    - Frontend coverage: `91.66%` statements, `81.53%` branches, `100%` functions, `91.54%` lines
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
+
 - ⬜ Step 8: Optional Docker support
   - Add Dockerfiles and/or Docker Compose if time allows.
   - Document Docker usage in README.

@@ -40,6 +40,19 @@ const operationSymbols: Record<Operation, string> = {
   percentage: '%',
 }
 
+const userFacingErrorMessages: Record<string, string> = {
+  'division by zero': 'Choose a non-zero second number before dividing.',
+  'first operand is required': 'Enter a valid first number.',
+  'operation is required': 'Choose an operation before calculating.',
+  'second operand is required for this operation':
+    'Enter a valid second number for this operation.',
+  'square root is undefined for negative numbers':
+    'Square root only works with zero or positive numbers.',
+  'unsupported operation': 'Choose a supported calculator operation.',
+  'Unable to reach the calculator API.':
+    'The calculator API is not reachable. Make sure the backend is running.',
+}
+
 function App() {
   const [operation, setOperation] = useState<Operation>('add')
   const [firstOperand, setFirstOperand] = useState('')
@@ -92,11 +105,7 @@ function App() {
         value: response.result,
       })
     } catch (unknownError) {
-      setError(
-        unknownError instanceof Error
-          ? unknownError.message
-          : 'Unable to calculate result.',
-      )
+      setError(getUserFacingErrorMessage(unknownError))
     } finally {
       setIsLoading(false)
     }
@@ -215,6 +224,17 @@ function parseNumber(value: string): number | null {
 
 function formatResult(value: number): string {
   return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(10)))
+}
+
+function getUserFacingErrorMessage(error: unknown): string {
+  if (!(error instanceof Error)) {
+    return 'Unable to calculate result. Please try again.'
+  }
+
+  return (
+    userFacingErrorMessages[error.message] ??
+    'Unable to calculate result. Please check the numbers and try again.'
+  )
 }
 
 function displayValue(value: string, fallback: string): string {
