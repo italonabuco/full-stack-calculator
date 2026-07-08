@@ -18,6 +18,19 @@ A full-stack calculator application built as a code assessment. The React fronte
 - Unit tests for frontend behavior and backend calculation logic
 - OpenAPI specification in `openapi.yaml`
 
+## Assessment Coverage
+
+- React TypeScript frontend with responsive calculator UI.
+- Go backend microservice exposing REST endpoints.
+- Frontend consumes the backend API for all calculations.
+- Basic operations: addition, subtraction, multiplication, and division.
+- Advanced operations: exponentiation, square root, and percentage.
+- Input validation and user-friendly error handling in the frontend.
+- Backend validation for invalid data, unsupported operations, division by zero, missing operands, and negative square roots.
+- JSON API responses for successful calculations and errors.
+- Unit tests and coverage commands for both frontend and backend.
+- Setup, run instructions, API examples, design decisions, assumptions, screenshots, Docker instructions, and AI prompts are documented.
+
 ## Screenshots
 
 Initial calculator state:

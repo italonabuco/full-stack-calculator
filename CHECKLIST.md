@@ -154,9 +154,25 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `curl http://localhost:5173` returned the production frontend HTML.
     - `docker compose down` cleaned up the containers and network.
 
-- ⬜ Step 9: Final verification
+- ✅ Step 9: Final verification
   - Run backend tests and coverage.
   - Run frontend tests and coverage.
   - Run frontend build.
   - Review `git status`.
   - Prepare repository link for submission.
+  - Verify assessment requirements against the implemented repository.
+  - Verification:
+    - `env GOCACHE=/private/tmp/full-stack-calculator-go-build go test -v ./... -cover` passed from `backend/`.
+    - Backend API coverage: `97.3% of statements`.
+    - Backend calculator coverage: `86.5% of statements`.
+    - `npm run test:coverage` passed with Node.js `24.13.0` (`8` tests).
+    - Frontend coverage: `91.66%` statements, `81.53%` branches, `100%` functions, `91.54%` lines.
+    - `npm run build` passed with Node.js `24.13.0`.
+    - `npm run lint` passed with Node.js `24.13.0`.
+    - `docker compose config` passed.
+    - `docker compose build` passed.
+    - `docker compose up -d` passed.
+    - Docker health smoke check returned `{"status":"ok"}`.
+    - Docker percentage calculation smoke check returned `5`.
+    - Docker frontend smoke check returned production HTML.
+    - `docker compose down` cleaned up containers and network.
