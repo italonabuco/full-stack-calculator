@@ -89,3 +89,27 @@ Keep the frontend API contract simple by defining small hand-written TypeScript 
 ```txt
 Build the React calculator UI and connect it to the Go backend API using the hand-written frontend API types.
 ```
+
+```txt
+Create an intermediate step to polish the calculator UI with a larger operation selector, live formula preview, and result panel context.
+```
+
+```txt
+Make the UI components a little smaller because the first polished version looked too exaggerated.
+```
+
+```txt
+Fix the stale result expression bug where changing inputs after a calculation updates the formula text while keeping the previous result.
+```
+
+```txt
+Add frontend tests for validation behavior, operation-specific UI behavior, successful result display, and backend error display.
+```
+
+```txt
+Add a small optional frontend API client test using mocked fetch for success, API error, and network error behavior.
+```
+
+```txt
+Run a final documentation pass so the README includes setup instructions, frontend and backend run commands, API examples, design decisions, assumptions, and prompts used.
+```

@@ -102,6 +102,7 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run lint` passed with Node.js `24.13.0`
 
 - ✅ Step 6: Add frontend tests
+  - Commit: `a032906 test: add frontend calculator coverage`
   - Test validation behavior.
   - Test operation-specific UI behavior.
   - Test successful result display.
@@ -114,12 +115,20 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
 
-- ⬜ Step 7: Final documentation pass
+- ✅ Step 7: Final documentation pass
   - Add full setup instructions.
   - Add frontend and backend run commands.
   - Add API examples.
   - Add design decisions and assumptions.
   - Ensure `PROMPTS.md` is complete and presentable.
+  - Verification:
+    - `env GOCACHE=/private/tmp/full-stack-calculator-go-build go test -v ./... -cover` passed from `backend/`
+    - Backend API coverage: `97.3% of statements`
+    - Backend calculator coverage: `86.5% of statements`
+    - `npm run test:coverage` passed with Node.js `24.13.0`
+    - Frontend coverage: `92.64%` statements, `82.53%` branches, `100%` functions, `92.53%` lines
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
 
 - ⬜ Step 8: Optional Docker support
   - Add Dockerfiles and/or Docker Compose if time allows.

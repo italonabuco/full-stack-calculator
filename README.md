@@ -1,23 +1,24 @@
 # Full-Stack Calculator
 
-A full-stack calculator application built as a code assessment. The app will use a React frontend that calls a Go backend API for basic and advanced arithmetic operations.
+A full-stack calculator application built as a code assessment. The React frontend calls a Go REST API to perform basic and advanced arithmetic operations.
 
-## Planned Stack
+## Stack
 
 - Frontend: React, TypeScript, Vite
 - Backend: Go, REST API
 - Testing: Vitest and React Testing Library for the frontend, Go unit tests for the backend
-- Optional: Docker support for running the full stack
 
-## Planned Features
+## Features
 
 - Addition, subtraction, multiplication, and division
 - Advanced operations: exponentiation, square root, and percentage
-- Input validation and JSON error responses
+- Frontend input validation, loading, result, and error states
+- Backend validation with JSON success and error responses
 - Responsive calculator UI
 - Unit tests for frontend behavior and backend calculation logic
+- OpenAPI specification in `openapi.yaml`
 
-## Planned Project Structure
+## Project Structure
 
 ```txt
 .
@@ -27,7 +28,12 @@ A full-stack calculator application built as a code assessment. The app will use
 │       ├── api/
 │       └── calculator/
 ├── frontend/
-│   └── src/
+│   ├── src/
+│   │   └── api/
+│   └── package.json
+├── openapi.yaml
+├── PROMPTS.md
+├── CHECKLIST.md
 └── README.md
 ```
 
@@ -40,12 +46,19 @@ See `CHECKLIST.md` for the step-by-step implementation plan and current project 
 Install:
 
 - Go 1.26 or newer for the backend
-- Node.js 20.19 or newer for the frontend
+- Node.js 24 or newer for the frontend
 
-If you use `nvm`, switch to the project Node.js version before running frontend commands:
+If you use `nvm`, switch to the project Node.js version from the repository root:
 
 ```sh
 nvm use
+```
+
+Install frontend dependencies:
+
+```sh
+cd frontend
+npm install
 ```
 
 ## Backend
@@ -97,6 +110,71 @@ For detailed test output, use verbose mode:
 ```sh
 go test -v ./... -cover
 ```
+
+## Frontend
+
+The frontend is a Vite React TypeScript app under `frontend/`.
+
+Run the frontend development server:
+
+```sh
+cd frontend
+npm run dev
+```
+
+The frontend calls `http://localhost:8080` by default. To use a different API URL, set `VITE_API_BASE_URL` when running the frontend:
+
+```sh
+VITE_API_BASE_URL=http://localhost:9090 npm run dev
+```
+
+Build the frontend:
+
+```sh
+npm run build
+```
+
+Run frontend tests:
+
+```sh
+npm run test
+```
+
+Run frontend tests with coverage:
+
+```sh
+npm run test:coverage
+```
+
+Run lint:
+
+```sh
+npm run lint
+```
+
+Preview the production build:
+
+```sh
+npm run preview
+```
+
+## Running The Full App
+
+Start the backend first:
+
+```sh
+cd backend
+go run ./cmd/server
+```
+
+In a second terminal, start the frontend:
+
+```sh
+cd frontend
+npm run dev
+```
+
+Open the frontend at the URL printed by Vite, usually `http://localhost:5173`.
 
 ## API Examples
 
@@ -176,58 +254,14 @@ Supported operation values:
 - `sqrt`
 - `percentage`
 
-## Frontend
-
-The frontend is a Vite React TypeScript app under `frontend/`.
-
-Install frontend dependencies:
-
-```sh
-cd frontend
-npm install
-```
-
-Run the frontend development server:
-
-```sh
-npm run dev
-```
-
-The frontend calls `http://localhost:8080` by default. To use a different API URL, set `VITE_API_BASE_URL` when running the frontend:
-
-```sh
-VITE_API_BASE_URL=http://localhost:9090 npm run dev
-```
-
-Build the frontend:
-
-```sh
-npm run build
-```
-
-Run frontend tests:
-
-```sh
-npm run test
-```
-
-Run frontend tests with coverage:
-
-```sh
-npm run test:coverage
-```
-
-Preview the production build:
-
-```sh
-npm run preview
-```
-
 ## Design Decisions
 
 - Keep calculation logic separate from HTTP handlers so it can be tested directly.
 - Use the backend as the source of truth for validation and edge cases.
 - Keep the frontend API client isolated from UI components for maintainability.
+- Keep the API contract operation-based instead of implementing expression parsing.
+- Use hand-written frontend API types for this small API, while keeping `openapi.yaml` as the documented contract.
+- Keep all evaluation documentation in the root README so setup, API usage, and design rationale are easy to find.
 - Prioritize clarity and testability over unnecessary framework complexity.
 
 ### Operation-Based API
@@ -238,6 +272,35 @@ This keeps the API contract simple, predictable, and easy to validate. It also m
 
 Expression parsing, operator precedence, and multi-step formulas are intentionally out of scope for this assessment. The requested operation list maps cleanly to explicit API operations, which keeps the implementation focused on full-stack structure, validation, and maintainability.
 
+### OpenAPI And TypeScript Types
+
+The API contract is documented in `openapi.yaml`. The frontend currently uses small hand-written TypeScript request and response types in `frontend/src/api/types.ts`.
+
+For this assessment, hand-written types keep the implementation simple and readable. If the API grows, generated TypeScript types from `openapi.yaml` would be a reasonable next step.
+
+## Assumptions
+
+- The calculator runs one operation at a time and does not parse free-form mathematical expressions.
+- Operand `b` is required for every operation except square root.
+- The backend returns API errors as JSON with an `error` field.
+- Docker support is optional for this assessment and is not required to run the project locally.
+
+## Test Coverage
+
+Backend coverage is reported with:
+
+```sh
+cd backend
+go test ./... -cover
+```
+
+Frontend coverage is reported with:
+
+```sh
+cd frontend
+npm run test:coverage
+```
+
 ## AI Prompts Used
 
-Initial planning and implementation were assisted with AI tooling. Prompts will be recorded here as the project progresses.
+Initial planning and implementation were assisted with AI tooling. The prompts used for assessment transparency are recorded in `PROMPTS.md`.
