@@ -18,10 +18,25 @@ A full-stack calculator application built as a code assessment. The React fronte
 - Unit tests for frontend behavior and backend calculation logic
 - OpenAPI specification in `openapi.yaml`
 
+## Screenshots
+
+Initial calculator state:
+
+<img src="assets/initial-state.png" alt="Initial calculator state" width="520">
+
+Successful calculation:
+
+<img src="assets/result-sample.png" alt="Successful calculation result" width="520">
+
+Friendly error message:
+
+<img src="assets/error-sample.png" alt="Friendly calculator error message" width="520">
+
 ## Project Structure
 
 ```txt
 .
+├── assets/
 ├── backend/
 │   ├── cmd/server/
 │   └── internal/
