@@ -193,6 +193,12 @@ Run the frontend development server:
 npm run dev
 ```
 
+The frontend calls `http://localhost:8080` by default. To use a different API URL, set `VITE_API_BASE_URL` when running the frontend:
+
+```sh
+VITE_API_BASE_URL=http://localhost:9090 npm run dev
+```
+
 Build the frontend:
 
 ```sh
@@ -211,6 +217,14 @@ npm run preview
 - Use the backend as the source of truth for validation and edge cases.
 - Keep the frontend API client isolated from UI components for maintainability.
 - Prioritize clarity and testability over unnecessary framework complexity.
+
+### Operation-Based API
+
+The calculator performs one operation per API request instead of parsing full mathematical expressions. For example, the frontend sends an explicit operation such as `divide` with operands `a` and `b`.
+
+This keeps the API contract simple, predictable, and easy to validate. It also makes edge cases like division by zero, missing operands, unsupported operations, and square roots of negative numbers straightforward to test.
+
+Expression parsing, operator precedence, and multi-step formulas are intentionally out of scope for this assessment. The requested operation list maps cleanly to explicit API operations, which keeps the implementation focused on full-stack structure, validation, and maintainability.
 
 ## AI Prompts Used
 

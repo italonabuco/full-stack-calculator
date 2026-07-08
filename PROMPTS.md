@@ -85,3 +85,7 @@ Add frontend cleanup and configuration for the scaffold, including the project N
 ```txt
 Keep the frontend API contract simple by defining small hand-written TypeScript types instead of using generated OpenAPI client tooling.
 ```
+
+```txt
+Build the React calculator UI and connect it to the Go backend API using the hand-written frontend API types.
+```

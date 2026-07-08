@@ -79,11 +79,15 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
 
-- ⬜ Step 5: Build calculator UI
+- ✅ Step 5: Build calculator UI
   - Add operation selection and numeric inputs.
   - Add loading, result, and error states.
   - Add responsive styling.
   - Connect UI to backend API client.
+  - Remove unused Vite starter UI assets.
+  - Verification:
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
 
 - ⬜ Step 6: Add frontend tests
   - Test validation behavior.
