@@ -205,6 +205,18 @@ Build the frontend:
 npm run build
 ```
 
+Run frontend tests:
+
+```sh
+npm run test
+```
+
+Run frontend tests with coverage:
+
+```sh
+npm run test:coverage
+```
+
 Preview the production build:
 
 ```sh

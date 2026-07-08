@@ -101,11 +101,18 @@ This checklist tracks the assessment work in small reviewable steps. Each step s
     - `npm run build` passed with Node.js `24.13.0`
     - `npm run lint` passed with Node.js `24.13.0`
 
-- ⬜ Step 6: Add frontend tests
+- ✅ Step 6: Add frontend tests
   - Test validation behavior.
   - Test operation-specific UI behavior.
   - Test successful result display.
   - Test backend error display.
+  - Test frontend API client success, API error, and network error behavior.
+  - Verification:
+    - `npm run test` passed with Node.js `24.13.0` (`7` tests)
+    - `npm run test:coverage` passed with Node.js `24.13.0`
+    - Frontend coverage: `92.64%` statements, `82.53%` branches, `100%` functions, `92.53%` lines
+    - `npm run build` passed with Node.js `24.13.0`
+    - `npm run lint` passed with Node.js `24.13.0`
 
 - ⬜ Step 7: Final documentation pass
   - Add full setup instructions.
